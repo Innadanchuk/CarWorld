@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Car World</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+  body{
+    padding-top: 10px;
+    font: 400 15px/1.8 Lato, sans-serif;
+}
+
+h3, h4 {
+    margin: 10px 0 30px 0;
+    letter-spacing: 10px;      
+    font-size: 20px;
+    color: #111;
+}
+
+.container {
+    padding: 5px 120px;
+	margin-bottom: 0px;
+}
+#myCarousel
+{
+	margin: 40px 0;
+}
+.person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;   
+}
+button.green 
+{
+	margin-top: 30px;
+}
+
+.person:hover {
+    border-color: #f1f1f1;
+}
+
+.carousel-inner img {
+    -webkit-filter: grayscale(90%);
+    filter: grayscale(90%); /* make all photos black and white */ 
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+}
+
+.carousel-caption h3 {
+    color: #fff !important;
+}
+
+@media (max-width: 600px) {
+    .carousel-caption {
+      display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+}
+
+.btn {
+    padding: 10px 20px;
+    color: #f1f1f1;
+    border-radius: 0;
+    transition: .2s;
+}
+
+.btn:hover, .btn:focus {
+    border: 1px solid #333;
+    background-color: #fff;
+    color: #000;
+}
+
+.modal-header, h4, .close {
+    background-color: #333;
+    color: #fff !important;
+    text-align: center;
+    font-size: 30px;
+}
+
+.modal-header, .modal-body {
+    padding: 40px 50px;
+}
+
+.nav-tabs li a {
+    color: #777;
+}
+.green 
+{
+	background-color: #4CAF50; /* green colors */
+}
+  /* define primary colors */
+
+$primary_1: #4CAF50; /* green colors */
+$primary_2:  #FFA500; /* orange colors */
+$background-color: $primary_1;
+
+/* use the variables */
+
+.navbar {
+    margin-bottom: 0;
+	border: 0;
+    font-size: 22px !important;
+    letter-spacing: 4px;    
+}
+.navPhone {
+    font-size: 20px;
+    color: black !important;
+}
+ 
+footer {   
+    color: #f5f5f5;
+    padding: 32px;
+    background-color: #4CAF50;
+}
+
+footer a {
+    color: #f5f5f5;
+}
+
+footer a:hover {
+    color: #777;
+    text-decoration: none;
+}
+  
+.form-control {
+    border-radius: 0;
+}
+
+textarea {
+    resize: none;
+}
+
+  /* Toggle Switch */
+
+.dai-Switch > input[type="checkbox"] {
+    display: none;   
+}
+
+.dai-Switch > label {
+    cursor: pointer;
+    height: 0px;
+    position: fixed; 
+    margin: 10px;
+    width: 40px; 
+    top: 15px;
+    right: 5px;
+	left: 95%;
+}
+.dai-Switch > label::before {
+    background: rgb(0, 0, 0);
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    content: '';
+    height: 16px;
+    margin-top: -8px;
+    position:absolute;
+    opacity: 0.3;
+    transition: all 0.4s ease-in-out;
+    width: 40px;
+}
+.dai-Switch > label::after {
+    background: rgb(255, 255, 255);
+    border-radius: 16px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    content: '';
+    height: 24px;
+    left: -4px;
+    margin-top: -8px;
+    position: absolute;
+    top: -4px;
+    transition: all 0.3s ease-in-out;
+    width: 24px;
+}
+.dai-Switch > input[type="checkbox"]:checked + label::before {
+    background: inherit;
+    opacity: 0.5;
+}
+.dai-Switch > input[type="checkbox"]:checked + label::after {
+    background: inherit;
+    left: 20px;
+}
+
+.dai-Switch > input[type="checkbox"]:checked ~ .green {
+    background-color: #FFA500; /* orange colors */
+}
+.dai-Switch > input[type="checkbox"]:checked ~ .fade button {
+    background-color: #FFA500; /* orange colors */
+}
+.dai-Switch > input[type="checkbox"]:checked ~ #contact button {
+    background-color: #FFA500; /* orange colors */
+}
+
+.divUnderLabel
+{
+	cursor: pointer;
+    height: 52px;
+    position: fixed; 
+    width: 100%; 
+	top:0;
+	background-color: #4CAF50;
+	z-index:-2;
+}
+#idSend {
+    display: none;
+}
+  </style>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+	<div class="dai-Switch">                        
+		<input id="switchInput" name="switchInput" type="checkbox"/>
+		<label for="switchInput" class="label-default"></label>  
+		<div class="divUnderLabel green"></div>
+		
+	<!-- Navigation bar Section -->
+		<nav class="navbar bg-success navbar-fixed-top green" style="margin-right:6%">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>                        
+			  </button>
+		   </div>
+
+			<div class="collapse navbar-collapse" id="myNavbar">
+			  <ul class="nav navbar-nav navbar-right">
+				<li class="navPhone"><a href="#myPage">HOME</a></li>
+				<li class="navPhone"><a href="#cars">Cars</a></li>
+				<li class="navPhone"><a href="#contact">Contact US</a></li>
+				<li class="navPhone"><a href="#">Toggle Switch</a></li>                        
+			 </ul>                               
+			 </div>
+		  </div>
+		</nav>  
+		
+		<div id="myCarousel" class="carousel slide" data-ride="carousel" style="z-index:-3;		">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+			  <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+			  <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+			  <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+			  <div class="item">
+				<img src="https://4.404content.com/1/8A/27/1565892029944694704/fullsize.jpg" alt="KIA_Soul" width="1200" height="700">
+				<div class="carousel-caption">
+				  <h3>Kia Soul</h3>
+				  <p>Crossover Korean company "Kia"</p>
+				</div>      
+			  </div>
+
+			  <div class="item">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Benz_W_222_S_350_Bluetec.JPG/1280px-Mercedes-Benz_W_222_S_350_Bluetec.JPG" alt="Mercedes-Benz" width="1200" height="700">
+				<div class="carousel-caption">
+				  <h3>Mercedes-Benz</h3>
+				  <p>German trademark for transport vehicles</p>
+				</div>      
+			  </div>
+			
+			  <div class="item active">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/2019_Dacia_Sandero_Stepway_Techroad_Front.jpg/1920px-2019_Dacia_Sandero_Stepway_Techroad_Front.jpg" alt="Renault Sandero" width="1200" height="700">
+				<div class="carousel-caption">
+				  <h3>Renault Sandero</h3>
+				  <p>Five-door hatchback B Klass promptings on Shasі Logan</p>
+				</div>      
+			  </div>
+			</div>
+		</div>
+		
+	<!-- The phones Section -->
+		<div id="cars" class="container text-center">
+		  <h3>Cars</h3>
+		  <p><em>Welcome To CarWorld!</em></p>
+		  <p>We would like to thank you for visiting our website and considering CarWorld for the purchase of your pre-owned vehicles. It is our pleasure to sell reliable and dependable used cars to the Hawthorne Area and surrounding cities like Manhattan Beach, El Segundo, Gardena, and Inglewood. It is our goal to provide you with an excellent purchase and ownership experience.
+If you're searching for the Best Price on a quality pre-owned vehicle, look no further Repossess Auto has the top make's and models around. Our No-Pressure, professional, certified sales staff is eager to assist you.
+"We are proud to be the area’s premier buy here, pay here dealership. Thank you for choosing CarWorld!"</p>
+		  <br>
+		  <div class="row">
+			<div class="col-sm-4">
+			  <p class="text-center"><strong>New CONA</strong></p><br>
+			  <a href="https://hyundai.com.ua/hyundai-finance">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/2018_Hyundai_Kona_%28OS_MY18%29_Active_2WD_wagon_%282018-10-12%29_01.jpg/375px-2018_Hyundai_Kona_%28OS_MY18%29_Active_2WD_wagon_%282018-10-12%29_01.jpg" class="img-rounded person" alt="New CONA" height="100">
+			  </a>
+			  
+			</div>
+			<div class="col-sm-4">
+			  <p class="text-center"><strong>Expression</strong></p><br>
+			  <a href="https://www.renault.ua/vehicles/passenger/lodgy.html">
+				<img src="https://www.cdn.renault.com/content/dam/Renault/UA/personal-cars/Lodgy/hero-zone/colour-swatches/mod2.jpg.ximg.l_12_h.smart.jpg" class="img-rounded person" alt="Expression" height="100">
+			  </a>
+			  
+			</div>
+			<div class="col-sm-4">
+			  <p class="text-center"><strong>New Mazda 3</strong></p><br>
+			  <a href="http://mazda.ua/ua/showroom/">
+				<img src="http://mazdadb.com/images/uploads/mazda3_S_gray_ico.jpg" class="img-rounded person" alt="New Mazda 3"  height="100">
+			  </a>
+			 
+			</div>
+		  </div>
+		</div>
+		
+	<!-- Contact Section -->
+		<div id="contact" class="container my-2">
+		  <h3 class="text-center">Contact Us</h3>
+		  <p class="text-center"><em>We love our fans!</em></p>
+		  <div class="row">
+			<div class="col-md-4">
+			  <p>Drop a note.</p>
+			  <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
+			  <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
+			  <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+			</div>
+			<div class="col-md-8">
+			  <div class="row">
+				<div class="col-sm-6 form-group">
+				  <input class="form-control" id="name" name="name" placeholder="Name" type="text" required="">
+				</div>
+				<div class="col-sm-6 form-group">
+				  <input class="form-control" id="email" name="email" placeholder="Email" type="email" required="">
+				</div>
+			  </div>
+			  <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+			  <div class="row">
+				<div class="col-md-12 form-group">
+					<button class="btn btn-success pull-right green" style="border-radius: 5px;" data-toggle="modal" data-target="#idSend">Send</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  <br>
+		</div>
+
+	<!-- Footer -->
+		<footer class="text-center green">
+		  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="" data-original-title="TO TOP">
+			<span class="glyphicon glyphicon-chevron-up"></span>
+		  </a><br><br>
+		  <p>Developed by <a href="https://www.linkedin.com/in/inna-danchuk-1a3871138/" data-toggle="tooltip" title="" data-original-title="Visit w3schools"><b>Inna Danchuk</b></a></p> 
+		</footer>
+
+	<!-- Modal -->
+		<div id="idSend" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+				  <div class="modal-header">
+					<h4 class="modal-title">Car World</h4>
+				  </div>
+				  <div class="modal-body">
+					<p style="font-size: 150%"><b>“Thank you for joining us!”</b></p>
+				  </div>
+				  <div class="modal-footer">
+					<button id="btnForModel" type="button" class="btn btn-success green" style="border-radius: 5px;" data-dismiss="modal">Close</button>
+				  </div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</body>
+
+</html>
+
+
+
+
